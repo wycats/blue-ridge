@@ -1,1 +1,62 @@
+JavascriptTesting
+=================
+
 This collection of files is useful for getting a Rails app up and running with headless JSSpec tests for your JavaScript files.  
+
+More information at: http://blog.thinkrelevance.com/2008/7/31/fully-headless-jsspec
+
+To install:
+
+  rails_project> ./script/plugin install git://github.com/relevance/javascript_testing.git
+  rails_project> ./script/generate javascript_testing
+
+Example
+=======
+
+We don’t actually encourage you to write specs and tests for standard libraries like Prototype, JQuery, etc. It just makes for an easy demo.
+
+In test/javascripts/fixtures/selector.html
+
+  <html>
+  <body>
+    <div class="select_me"/>
+    <span class="select_me"/>
+    <div class="dont_select_me"/>
+  </body>
+  </html>
+  
+In test/javascripts/spec_selector.js
+
+  load("jsspec/config.js"); 
+  window.location = "fixtures/selector.html";
+  load("jsspec/jsspec.js");
+
+  with(Spec) {  
+     describe("Prototype's $$ selector", function() { with(this) {  
+
+       it("should find only elements with the provided class selector", function() {  
+          ($$('.select_me').length).should(equal(2));
+       });
+
+       it("should find only elements with the provided tag", function() {
+         ($$('div').length).should(equal(2));
+       });
+
+     }});
+  };
+
+  Specs.report = "ConsoleReport";  
+  Specs.run();
+  
+Now run the individual spec:
+
+  rake test:jsspec TEST=spec_string.js
+  
+Or run all of the specs:
+
+  rake test:jsspec  
+
+Copyright (c) 2008 Relevance, Inc., released under the MIT license
+  env.js - Copyright 2007 John Resig, under the MIT License
+  jsspec.js - Copyright 2007 Nicolas Sanguinetti, under the MIT License
+

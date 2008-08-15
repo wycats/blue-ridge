@@ -1,4 +1,3 @@
-
 # Replace the path to js.jar with something that works in your environment
 namespace :test do  
   desc "Runs all the JSSpec tests and collects the results"
