@@ -4,7 +4,7 @@ namespace :test do
     plugin_prefix = "#{RAILS_ROOT}/vendor/plugins/javascript_testing"  
     test_runner_command = "java -jar #{plugin_prefix}/lib/js.jar #{plugin_prefix}/lib/test_runner.js"
     
-    Dir.chdir("test/javascripts") do
+    Dir.chdir("test/javascript") do
       all_fine = true
       if ENV["TEST"]
         all_fine = false unless system("#{test_runner_command} #{ENV["TEST"]}")

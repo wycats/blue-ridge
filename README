@@ -15,7 +15,7 @@ Example
 
 We don’t actually encourage you to write specs and tests for standard libraries like Prototype, JQuery, etc. It just makes for an easy demo.
 
-In test/javascripts/fixtures/selector.html
+In test/javascript/fixtures/selector.html
 
   <html>
   <body>
@@ -25,7 +25,7 @@ In test/javascripts/fixtures/selector.html
   </body>
   </html>
   
-In test/javascripts/spec_selector.js
+In test/javascript/spec_selector.js
 
   load("jsspec/config.js"); 
   window.location = "fixtures/selector.html";
