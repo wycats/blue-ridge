@@ -1,0 +1,33 @@
+<!-- NOTE: currently the fake DOM implementation we're using doesn't support DOCTYPEs.  Not sure why? -->
+<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"> -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+  <title>JSSpec Results</title>
+  <link rel="stylesheet" href="js-spec.css" type="text/css" charset="utf-8" />
+  <script type="text/javascript" src="../../../public/javascripts/prototype.js"></script>
+  <script type="text/javascript" src="../../../vendor/plugins/javascript_testing/lib/jsspec.js"></script>
+  
+  <script type="text/javascript">
+    function require(url) {
+      // var head = document.getElementsByTagName("head")[0];
+      // var script = document.createElement("script");
+      // script.src = url;
+      // head.appendChild(script);
+    }
+  </script>
+</head>
+
+<body>
+  <!-- Put any HTML fixture elements here. -->
+  <div class="select_me"/>
+  <span class="select_me"/>
+  <div class="dont_select_me"/>
+
+  <!-- TODO: make these an onload function when running in the browser (and set HtmlReport?) -->
+  <!-- Load your test script here.  Make sure this is the last item in the body tag! -->
+  <script type="text/javascript" src="../application_spec.js"></script>
+  <script type="text/javascript" charset="utf-8">Specs.run();</script>
+</body>
+</html>
