@@ -7,7 +7,7 @@ namespace :test do
     Dir.chdir("test/javascript") do
       all_fine = true
       if ENV["TEST"]
-        all_fine = false unless system("#{test_runner_command} #{ENV["TEST"]}")
+        all_fine = false unless system("#{test_runner_command} #{ENV["TEST"]}_spec.js")
       else
         Dir.glob("*_spec.js").each do |file|
           all_fine = false unless system("#{test_runner_command} #{file}")
