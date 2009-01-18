@@ -13,7 +13,7 @@ namespace :test do
           all_fine = false unless system("#{test_runner_command} #{file}")
         end
       end
-      raise "JSSpec test failures" unless all_fine
+      raise "Javascript test failures" unless all_fine
     end
   end
   
