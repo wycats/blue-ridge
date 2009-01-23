@@ -7,7 +7,7 @@ class JavascriptTestingGenerator < Rails::Generator::Base
       
       m.directory 'test/javascript/fixtures'
       m.file 'application.html', 'test/javascript/fixtures/application.html'
-      m.file 'js-spec.css',      'test/javascript/fixtures/js-spec.css'
+      m.file 'screw.css',      'test/javascript/fixtures/screw.css'
     end
   end
 end

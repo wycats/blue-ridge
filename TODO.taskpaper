@@ -9,7 +9,8 @@ Release 1:
 - change generators to use Screw.Unit style instead of JS-Spec
 - improve "require" to take an array and chain then together in order @release2?
 - test that env-js works with DOCTYPEs now?
-
+- why is rake building everything twice (from command line & from TextMate)
 Release 2:
 - write Java code (and include jar) that allows calling print without adding an additional newline
 	- will require an ant build in the plugin?
+- rake task to open fixtures in your favorite web browser?

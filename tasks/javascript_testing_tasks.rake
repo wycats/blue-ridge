@@ -1,7 +1,7 @@
 namespace :test do  
   desc "Runs all the JSSpec tests and collects the results"
   task :javascripts do
-    plugin_prefix = "#{RAILS_ROOT}/vendor/plugins/javascript_testing"  
+    plugin_prefix = "#{RAILS_ROOT}/vendor/plugins/javascript_testing"
     test_runner_command = "java -jar #{plugin_prefix}/lib/js.jar #{plugin_prefix}/lib/test_runner.js"
     
     Dir.chdir("test/javascript") do
