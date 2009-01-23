@@ -9,6 +9,9 @@ To install:
 
   rails_project> ./script/plugin install git://github.com/relevance/javascript_testing.git
   rails_project> ./script/generate javascript_testing
+  
+  
+... example of creating just one spec ...  
 
 Example
 =======
@@ -26,6 +29,9 @@ In test/javascript/fixtures/selector.html
   </html>
   
 In test/javascript/spec_selector.js
+
+... change to "require"
+... change to Screw.Unit
 
   load("jsspec/config.js"); 
   window.location = "fixtures/selector.html";
@@ -55,8 +61,13 @@ Now run the individual spec:
 Or run all of the specs:
 
   rake test:jsspec  
+  
+  
+... API: require, etc ...  
 
-Copyright (c) 2008 Relevance, Inc., released under the MIT license
-  env.js - Copyright 2007 John Resig, under the MIT License
+Copyright (c) 2008-9 Relevance, Inc., released under the MIT license
+  env.js - Copyright 2007-9 John Resig, under the MIT License
   jsspec.js - Copyright 2007 Nicolas Sanguinetti, under the MIT License
+  Screw.Unit - ....
+  ... Rhino Jar...
 
