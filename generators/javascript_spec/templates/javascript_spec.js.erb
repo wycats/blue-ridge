@@ -1,9 +1,9 @@
 require("spec_helper.js");
 
-with(Spec) {
-  describe("<%= class_name_without_spec %>", function() { with(this) {
+Screw.Unit(function() {
+  describe("<%= class_name_without_spec %>", function() {
     it("should do something", function() {
-      // "something".should(equal("something"));
+      // expect("hello").to(equal, "hello");
     });
-  }});
-};
+  });
+});

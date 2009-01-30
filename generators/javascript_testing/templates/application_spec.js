@@ -1,13 +1,15 @@
 require("spec_helper.js");
+require("../../public/javascripts/prototype.js");
 
-with(Spec) {
-  describe("Your application javascript", function() { with(this) {
+Screw.Unit(function() {
+  describe("Your application javascript", function() {
     it("should do something", function() {
-      "hello".should(equal("hello"));
+      expect("hello").to(equal, "hello");
     });
-     
+
     it("Prototype's $$ selector should find only elements with the provided class selector", function() {
-      ($$('.select_me').length).should(equal(2));
+      expect($$('.select_me').length).to(equal, 2);
     });
-  }});
-};
+  });
+});
+

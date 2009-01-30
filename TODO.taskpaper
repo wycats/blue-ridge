@@ -3,14 +3,10 @@ Release 1:
 	- include correct copyright notices of vendored software
 	- add note re timing issue of "require" calls in browser tests
 	- add API documentation (require, etc)
-- improve output as much as possible without adding Java code 
+- improve output as much as possible without adding Java code  @done(2009-01-30)
 - change the rake tasks and generators to create the spec files in a Rspec "spec" directory? @chad
 - merge back to Relevance's javascript_testing project on GitHub
 - change generators to use Screw.Unit style instead of JS-Spec
-- improve "require" to take an array and chain then together in order @release2?
-- test that env-js works with DOCTYPEs now?
-- why is rake building everything twice (from command line & from TextMate)
-Release 2:
-- write Java code (and include jar) that allows calling print without adding an additional newline
-	- will require an ant build in the plugin?
-- rake task to open fixtures in your favorite web browser?
+- test that env-js works with DOCTYPEs now? @done(2009-01-30)
+- rake task to open fixtures in your favorite web browser? @in-progress
+- improve "require" to take an array and chain then together in order

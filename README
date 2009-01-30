@@ -1,3 +1,6 @@
+NOTE: There is a MASSIVE change going on right now that is moving the underlying test framework from JS-Spec to Screw.Unit.
+I'll be updating the README to reflect that soon.  -- Larry Karnowski 2009-01-30
+
 JavascriptTesting
 =================
 
@@ -67,7 +70,7 @@ Or run all of the specs:
 
 Copyright (c) 2008-9 Relevance, Inc., released under the MIT license
   env.js - Copyright 2007-9 John Resig, under the MIT License
-  jsspec.js - Copyright 2007 Nicolas Sanguinetti, under the MIT License
+  ... REMOVE: jsspec.js - Copyright 2007 Nicolas Sanguinetti, under the MIT License
   Screw.Unit - ....
   ... Rhino Jar...
 
