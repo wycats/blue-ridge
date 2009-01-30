@@ -17,5 +17,21 @@ namespace :test do
     end
   end
   
+  
   task :javascript => :javascripts
+end
+
+namespace :js do
+  task :fixtures do
+    fixture_dir = "#{RAILS_ROOT}/test/javascript/fixtures"
+    
+    if PLATFORM['darwin']
+      system("open #{fixture_dir}")
+    elsif PLATFORM[/linux/]
+      system("firefox #{fixture_dir}")
+    else
+      puts "You can run your in-browser fixtures from #{fixture_dir}."
+    end
+  end
+  
 end
