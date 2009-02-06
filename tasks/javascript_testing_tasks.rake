@@ -47,8 +47,8 @@ namespace :js do
   
   namespace :debug do
     task :shell do
-      system("#{rhino_command} -f #{plugin_prefix}/lib/debug_shell.js -f -")
-      #system("#{rhino_command} -f - -e '#{debug_setup_script}'")
+      rlwrap = `which rlwrap`.chomp
+      system("#{rlwrap} #{rhino_command} -f #{plugin_prefix}/lib/debug_shell.js -f -")
     end
   end
 end
