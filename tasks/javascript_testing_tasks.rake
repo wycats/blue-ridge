@@ -3,18 +3,6 @@ fixture_dir = "#{RAILS_ROOT}/test/javascript/fixtures"
 rhino_command = "java -jar #{plugin_prefix}/lib/js.jar -w -debug"
 test_runner_command = "#{rhino_command} #{plugin_prefix}/lib/test_runner.js"
 
-# debug_setup_script = <<END
-#    print("========================================");
-#    print(" JavaScript Testing Rhino Debug Shell");
-#    print(" To exit shell type: quit()");
-#    print("========================================");
-# 
-#    load("#{plugin_prefix}/lib/env.rhino.js");
-#    print("loaded env.js");
-#    window.location = "#{plugin_prefix}/generators/javascript_testing/templates/application.html";
-#    //print ("sample DOM loaded");
-# END
-
 namespace :test do
   desc "Runs all the JavaScript tests and outputs the results"
   task :javascripts do
@@ -45,10 +33,8 @@ namespace :js do
     end
   end
   
-  namespace :debug do
-    task :shell do
-      rlwrap = `which rlwrap`.chomp
-      system("#{rlwrap} #{rhino_command} -f #{plugin_prefix}/lib/debug_shell.js -f -")
-    end
+  task :shell do
+    rlwrap = `which rlwrap`.chomp
+    system("#{rlwrap} #{rhino_command} -f #{plugin_prefix}/lib/shell.js -f -")
   end
 end
