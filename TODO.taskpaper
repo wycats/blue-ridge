@@ -4,9 +4,12 @@ Release 1:
 	- add note re timing issue of "require" calls in browser tests
 	- add API documentation (require, etc)
 - improve output as much as possible without adding Java code  @done(2009-01-30)
-- change the rake tasks and generators to create the spec files in a Rspec "spec" directory? @chad
-- merge back to Relevance's javascript_testing project on GitHub
-- change generators to use Screw.Unit style instead of JS-Spec
+- merge back to Relevance's javascript_testing project on GitHub @done
+- change generators to use Screw.Unit style instead of JS-Spec @done
 - test that env-js works with DOCTYPEs now? @done(2009-01-30)
-- rake task to open fixtures in your favorite web browser? @in-progress
+- rake task to open fixtures in your favorite web browser? @done
 - improve "require" to take an array and chain then together in order
+- make the generator check for "test", "spec", and then "examples" directory to create the "javascript" dir
+- support Prototype @done
+- support jQuery 1.3.1 @in-progress
+- handle display of nested describes better
