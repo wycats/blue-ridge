@@ -3,13 +3,17 @@ class JavascriptSpecGenerator < Rails::Generator::NamedBase
     file_path_with_spec, file_path_without_spec = file_path_with_and_without_spec
     
     record do |m|
-      m.directory 'test/javascript'
-      m.directory 'test/javascript/fixtures'
+      m.directory base_dir
+      m.directory "#{base_dir}/fixtures"
       
       options = {:class_name_without_spec => class_name_without_spec}
-      m.template 'javascript_spec.js.erb', "test/javascript/#{file_path_with_spec}.js", options
-      m.template 'fixture.html.erb', "test/javascript/fixtures/#{file_path_without_spec}.html", options
+      m.template 'javascript_spec.js.erb', "#{base_dir}/#{file_path_with_spec}.js", options
+      m.template 'fixture.html.erb', "#{base_dir}/fixtures/#{file_path_without_spec}.html", options
     end
+  end
+
+  def base_dir
+    @base_dir ||= File.exist?("spec") ? "spec/javascripts" : "test/javascript"
   end
 
   def file_path_with_and_without_spec

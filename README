@@ -1,16 +1,13 @@
-NOTE: There is a MASSIVE change going on right now that is moving the underlying test framework from JS-Spec to Screw.Unit.
-I'll be updating the README to reflect that soon.  -- Larry Karnowski 2009-01-30
-
 JavascriptTesting
 =================
 
-This collection of files is useful for getting a Rails app up and running with headless JSSpec tests for your JavaScript files.  
+This collection of files is useful for getting a Rails app up and running with headless Screw.Unit tests for your JavaScript files.  
 
 More information at: http://blog.thinkrelevance.com/2008/7/31/fully-headless-jsspec
 
 To install:
 
-  rails_project> ./script/plugin install git://github.com/relevance/javascript_testing.git
+  rails_project> ./script/plugin install git://github.com/rsim/javascript_testing.git
   rails_project> ./script/generate javascript_testing
   
   
@@ -31,46 +28,37 @@ In test/javascript/fixtures/selector.html
   </body>
   </html>
   
-In test/javascript/spec_selector.js
+In test/javascript/selector_spec.js
 
-... change to "require"
-... change to Screw.Unit
+  require("spec_helper.js");
+  require("../../public/javascripts/prototype.js");
 
-  load("jsspec/config.js"); 
-  window.location = "fixtures/selector.html";
-  load("jsspec/jsspec.js");
+  Screw.Unit(function() {
+    describe("Prototype's $$ selector", function() {
+      it("should find only elements with the provided class selector", function() {  
+         expect($$('.select_me').length).to(equal, 2);
+      });
 
-  with(Spec) {  
-     describe("Prototype's $$ selector", function() { with(this) {  
+      it("should find only elements with the provided tag", function() {
+        expect($$('div').length).to(equal,2);
+      });
+    });
+  });
 
-       it("should find only elements with the provided class selector", function() {  
-          ($$('.select_me').length).should(equal(2));
-       });
-
-       it("should find only elements with the provided tag", function() {
-         ($$('div').length).should(equal(2));
-       });
-
-     }});
-  };
-
-  Specs.report = "ConsoleReport";  
-  Specs.run();
   
 Now run the individual spec:
 
-  rake test:jsspec TEST=spec_string.js
+  rake test:javascripts TEST=selector_spec.js
   
 Or run all of the specs:
 
-  rake test:jsspec  
+  rake test:javascripts
   
   
 ... API: require, etc ...  
 
 Copyright (c) 2008-9 Relevance, Inc., released under the MIT license
   env.js - Copyright 2007-9 John Resig, under the MIT License
-  ... REMOVE: jsspec.js - Copyright 2007 Nicolas Sanguinetti, under the MIT License
   Screw.Unit - ....
   ... Rhino Jar...
 
