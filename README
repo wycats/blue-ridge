@@ -1,5 +1,5 @@
-JavascriptTesting
-=================
+JavaScript Testing
+==================
 
 This collection of files is useful for getting a Rails app up and running with headless Screw.Unit tests for your JavaScript files.  
 
@@ -7,7 +7,7 @@ More information at: http://blog.thinkrelevance.com/2008/7/31/fully-headless-jss
 
 To install:
 
-  rails_project> ./script/plugin install git://github.com/rsim/javascript_testing.git
+  rails_project> ./script/plugin install git://github.com/relevance/javascript_testing.git
   rails_project> ./script/generate javascript_testing
   
   
@@ -59,6 +59,6 @@ Or run all of the specs:
 
 Copyright (c) 2008-9 Relevance, Inc., released under the MIT license
   env.js - Copyright 2007-9 John Resig, under the MIT License
-  Screw.Unit - ....
-  ... Rhino Jar...
+  Screw.Unit - Copyright 2008 Nick Kallen, license included
+  Rhino - Copyright 2009 Mozilla Foundation, GPL 2.0
 
