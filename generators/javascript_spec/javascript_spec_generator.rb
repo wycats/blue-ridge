@@ -6,9 +6,9 @@ class JavascriptSpecGenerator < Rails::Generator::NamedBase
       m.directory base_dir
       m.directory "#{base_dir}/fixtures"
       
-      options = {:class_name_without_spec => class_name_without_spec}
-      m.template 'javascript_spec.js.erb', "#{base_dir}/#{file_path_with_spec}.js", options
-      m.template 'fixture.html.erb', "#{base_dir}/fixtures/#{file_path_without_spec}.html", options
+      options = {:class_name_without_spec => class_name_without_spec, :file_path_without_spec => file_path_without_spec}
+      m.template 'javascript_spec.js.erb', "#{base_dir}/#{file_path_with_spec}.js", :assigns => options
+      m.template 'fixture.html.erb', "#{base_dir}/fixtures/#{file_path_without_spec}.html", :assigns => options
     end
   end
 
