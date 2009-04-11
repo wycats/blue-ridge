@@ -4,7 +4,7 @@ test_runner_command = "#{rhino_command} #{plugin_prefix}/lib/test_runner.js"
 
 def find_base_dir
   prefix = ["test", "spec", "examples"].find {|d| File.exist?("#{d}/javascript") }
-  raise "Could not find JavaScript test directory.  Neither 'test', 'spec', nor 'examples' contained a 'javascript' directory." unless prefix
+  raise "Could not find JavaScript test directory.\nNeither 'test', 'spec', nor 'examples' contained a 'javascript' directory.\nMaybe you need to call './script/generate javascript_testing'?" unless prefix
   "#{prefix}/javascript"
 end
 
