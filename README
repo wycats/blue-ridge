@@ -48,7 +48,7 @@ In test/javascript/selector_spec.js
   
 Now run the individual spec:
 
-  rake test:javascripts TEST=selector
+  rake test:javascripts TEST=selector_spec.js
   
 Or run all of the specs:
 
