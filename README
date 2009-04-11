@@ -59,6 +59,15 @@ Or run all of the specs:
 
 Copyright (c) 2008-9 Relevance, Inc., released under the MIT license
   env.js - Copyright 2007-9 John Resig, under the MIT License
-  Screw.Unit - Copyright 2008 Nick Kallen, license included
+  Screw.Unit - Copyright 2008 Nick Kallen, license attached
   Rhino - Copyright 2009 Mozilla Foundation, GPL 2.0
+  Smoke - Copyright 2008 Andy Kent, license attached
 
+Contributors
+===================
+* Justin Gehtland
+* Geof Dagley
+* Larry Karnowski
+* Raimonds Simanovskis
+* Jason Rudolph
+* Chris Thatcher (for numerous env.js bug fixes!)
