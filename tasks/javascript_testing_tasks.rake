@@ -3,11 +3,13 @@ rhino_command = "java -jar #{plugin_prefix}/lib/js.jar -w -debug"
 test_runner_command = "#{rhino_command} #{plugin_prefix}/lib/test_runner.js"
 
 def find_base_dir
-  prefix = ["test", "spec", "examples"].find {|d| File.exist?("#{d}/javascript") }
-  raise "Could not find JavaScript test directory.\nNeither 'test', 'spec', nor 'examples' contained a 'javascript' directory.\nMaybe you need to call './script/generate javascript_testing'?" unless prefix
-  "#{prefix}/javascript"
+  target_dirs = ["test/javascript", "spec/javascripts", "examples/javascripts"]
+  base_dir = target_dirs.find {|d| File.exist?(d) }
+  raise "Could not find JavaScript test directory.\nNone of the following directories existed: #{target_dirs.join(", ")}.\nMaybe you need to call './script/generate javascript_testing'?" unless base_dir
+  base_dir
 end
 
+# Support Test::Unit & Test/Spec style
 namespace :test do
   desc "Runs all the JavaScript tests and outputs the results"
   task :javascripts do
@@ -26,6 +28,19 @@ namespace :test do
   
   task :javascript => :javascripts
 end
+
+# Support RSpec style
+namespace :spec do
+  task :javascripts => ["test:javascripts"]
+  task :javascript =>  ["test:javascripts"]
+end
+
+# Support Micronaut style
+namespace :examples do
+  task :javascripts => ["test:javascripts"]
+  task :javascript =>  ["test:javascripts"]
+end
+
 
 namespace :js do
   task :fixtures do

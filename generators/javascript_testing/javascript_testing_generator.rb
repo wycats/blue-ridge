@@ -12,7 +12,7 @@ class JavascriptTestingGenerator < Rails::Generator::Base
   end
 
   def base_dir
-    @base_dir ||= File.exist?("spec") ? "spec/javascripts" : "test/javascript"
+    @base_dir ||= File.exist?("examples") ? "examples/javascripts" : File.exist?("spec") ? "spec/javascripts" : "test/javascript"
   end
 
 end
