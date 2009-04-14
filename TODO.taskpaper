@@ -27,5 +27,5 @@ Release 1:
 	- what is the new name?  "blueridge"?  "blue-ridge"?  something else?
 Release 2:
 - sprockets support?
-- improve "require" to take an array and chain them together in order?
+- improve "require" to take an array and chain them together in order
 - handle display of nested describes better for command-line
