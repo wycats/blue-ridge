@@ -1,7 +1,8 @@
 JavaScript Testing
 ==================
 
-The JavaScript Testing Rails Plugin adds support for command-line and in-browser JavaScript unit testing to your Rails app.
+The JavaScript Testing Rails Plugin adds support for command-line and in-browser JavaScript unit testing to your Rails app. 
+The plugin uses a behaviour-driven development toolkit called `Screw.Unit` that has a syntax similar to Ruby's `RSpec`.
 
 
 Installing and Running
@@ -9,28 +10,53 @@ Installing and Running
 
 To install:
 
-    rails_project> ./script/plugin install git://github.com/relevance/javascript_testing.git
-    rails_project> ./script/generate javascript_testing
+    ./script/plugin install git://github.com/relevance/javascript_testing.git
+    ./script/generate javascript_testing
   
+To run all of the specs:
+
+    rake test:javascripts
+  
+(Hint: You can also use `spec:javascripts` or `examples:javascripts`.  They're all the same.)
+  
+To run an individual spec file called "selector_spec.js":
+
+    rake test:javascripts TEST=selector
+
+Directory Layout: Specs and Fixtures
+-------------------------------------
+
+(why we need fixtures)  
+
+* env.js needs it to run from command line (elaborate)
+* makes it easy to run inside browser
+* one fixture per spec file
+
 This will create one of the following directories:
 
 * `examples/javascripts`: if you're using [Micronaut](http://github.com/spicycode/micronaut)
 * `spec/javascripts`: if you're using [RSpec]()
 * `test/javascript`: if you're using anything else
 
-To run all of the specs:
+(support for Micronaut, RSpec, etc.)
 
-   rails_project> rake test:javascripts
-  
-(Hint: You can also use `spec:javascripts` or `examples:javascripts`.  They're all the same.)
-  
-To run an individual spec file "selector_spec.js":
+In test/javascript/fixtures/selector.html
 
-  rails_project> rake test:javascripts TEST=selector
+    <html>
+      <body>
+        <div class="select_me"/>
+        <span class="select_me"/>
+        <div class="dont_select_me"/>
+      </body>
+    </html>
   
+(anatomy of a fixture)
+(creating HTML fixtures, fixture replacement example)
 
-Example using jQuery (the default)
-----------------------------------
+Example Spec using jQuery (the default)
+---------------------------------------
+
+This plugin is opinionated and assumes you're using jQuery by default.  The plugin itself actually uses jQuery under the covers to run Screw.Unit.
 
     require("spec_helper.js");
     require("../../public/javascripts/application.js");
@@ -47,26 +73,15 @@ Example using jQuery (the default)
       });
     });
 
-
+(By the way, we don’t actually encourage you to write specs and tests for standard libraries like JQuery and Prototype. It just makes for an easy demo.)
 
 Example using Prototype
 -----------------------
 
-We don’t actually encourage you to write specs and tests for standard libraries like Prototype, JQuery, etc. It just makes for an easy demo.
-
-In test/javascript/fixtures/selector.html
-
-    <html>
-    <body>
-    <div class="select_me"/>
-    <span class="select_me"/>
-    <div class="dont_select_me"/>
-    </body>
-    </html>
-  
-In test/javascript/selector_spec.js
+It's very easy to add support for Prototype, however.  Here's an example:
 
     jQuery.noConflict();
+    
     require("spec_helper.js");
     require("../../public/javascripts/prototype.js", {onload: function() {
         require("../../public/javascripts/application.js");
@@ -84,22 +99,44 @@ In test/javascript/selector_spec.js
         });
     });
 
+Note that you must do the following:
+
+* put jQuery into "no conflict" mode to give the `$` function back to Prototype
+* require the `prototype.js` file
+* chain any files that are dependent on `prototype.js` being load in an `onload`
   
 JavaScript API
 --------------
 
-... API: require, etc ...  
+The JavaScript Testing Rails Plugin provides a small API that lets you write specs that can run correctly inside a web browser as well from the Rhino command-line test runner.
 
-Extras 
+### require
+When running from the command line, `require` becomes a Rhino call to `load`, but in a web browser, it dynamically creates a JavaScript `script` tag and loads your given file for you.
+
+... onload explanation and example ... 
+
+### debug
+When running from the command line, `debug` simply prints a message to stdout, but in a web browser it outputs into the DOM directly.
+
+### console.debug
+As a big fan of Firebug, I often have a `console.debug` function call in my tests to debug a problem.  Calling this from the command-line however, would blow up.  
+To make my life a little easier, this `console.debug` is just an alias to Rhino's `print` which write text to stdout.
+
+Extras
 -------------
 
-.. js:fixtures ..
-.. js:shell ..
+### rake js:fixtures
+If you're on a Macintosh computer, this command opens your JavaScript fixtures directory using Finder to make running specs from a browser a bit easier.  
+If you're on Linux, it opens the same directory using Firefox.
+
+### rake js:shell
+Runs an IRB-like JavaScript shell for debugging your JavaScript code.  jQuery and env.js are pre-loaded for you to make debugging DOM code easy.
+
 
 Mocking Example with Smoke
 --------------------------
 
-TBD
+...TBD....
 
 Links
 -------------
