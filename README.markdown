@@ -138,6 +138,16 @@ Mocking Example with Smoke
 
 ...TBD....
 
+Tips & Tricks
+-------------
+* (avoid `print` in your tests; it works fine from command line but causes lots of headaches in browser)
+* don't test jQuery or Prototype, especially event wiring... instead write a separate function, test it, and wire it to events
+
+Caveats
+----------
+env.js and jQuery 1.3.x do not currently get along well, so the JavaScript Testing Rails Plugin currently uses jQuery 1.2.6 to run command line specs.
+
+
 Links
 -------------
 * [http://github.com/relevance/javascript_testing](http://github.com/relevance/javascript_testing)
