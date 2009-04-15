@@ -169,7 +169,7 @@ env.js and jQuery 1.3.x do not currently get along well (as of 2009-04-14), so t
 
 Contributing
 ------------
-Fork the [Relevance repo on GitHub](http://www.github.com/relevance/javascript_testing) and start hacking!  If you have patches, send us pull requests.  Also, ([env.js](http://github.com/thatcher/env-js)), [Smoke](http://github.com/andykent/smoke), and [Screw.Unit](http://github.com/nkallen/screw-unit) can use your love too!
+Fork the [Relevance repo on GitHub](http://www.github.com/relevance/javascript_testing) and start hacking!  If you have patches, send us pull requests.  Also, [env.js](http://github.com/thatcher/env-js), [Smoke](http://github.com/andykent/smoke), and [Screw.Unit](http://github.com/nkallen/screw-unit) could use your love too!
 
 Links
 -------------
@@ -194,7 +194,7 @@ Contributors
 
 Copyrights
 ------------
-* Copyright &copy; 2008-2009 [http://www.thinkrelevance.com/](Relevance, Inc.), under the MIT license
+* Copyright &copy; 2008-2009 [Relevance, Inc.](http://www.thinkrelevance.com/), under the MIT license
 * env.js     - Copyright 2007-2009 John Resig, under the MIT License
 * Screw.Unit - Copyright 2008 Nick Kallen, license attached
 * Rhino      - Copyright 2009 Mozilla Foundation, GPL 2.0
