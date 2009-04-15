@@ -155,8 +155,14 @@ Note that if you have `rlwrap` installed and on the command line path (and you r
 
 Mocking Example with Smoke
 --------------------------
+Smoke is a JavaScript mocking and stubbing toolkit that is somewhat similar to FlexMock or Mocha.  It is automatically wired-in to undo its mocking after each Screw.Unit `it` block.  Here's an example.
 
-...TBD....
+    it("calculates the total cost of a contract by adding the prices of each component", function() {
+      var componentX = {}, componentY = {};
+      mock(SalesContract).should_receive("calculateComponentPrice").with_arguments(componentX).exactly(1, "times").and_return(42);
+      mock(SalesContract).should_receive("calculateComponentPrice").with_arguments(componentY).exactly(1, "times").and_return(24);
+      expect(SalesContract.calculateTotalCost([componentX, componentY])).to(equal, 66);
+    });
 
 Tips & Tricks
 -------------
