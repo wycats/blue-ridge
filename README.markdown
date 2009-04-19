@@ -21,45 +21,45 @@ To run an individual spec file called "application_spec.js":
 
     rake test:javascripts TEST=application
     
-To generate a spec for a JavaScript file called "public/javascripts/graphics.js" run:
+To generate and run a spec for a JavaScript file called "public/javascripts/graphics.js" run:
 
     ./script/generate javascript_spec graphics
     rake test:javascripts TEST=graphics
 
-To run your spec inside a web browser, load the appropriate `HTML fixture` (see below).
+To run your spec inside a web browser, load the `HTML fixture` associated with the spec. (See below for more information on HTML fixtures and in-browser testing).
 
 Directory Layout: Specs and Fixtures
 -------------------------------------
 
 ### JavaScript Spec Directories
 
-The plugin creates a JavaScript spec directories under one of the following directories, depending on which tool you use to test your Ruby code:
+The plugin creates a directory for your JavaScript specs in one of the following directories, depending on which tool you use to test your Ruby code:
 
 * examples/javascripts: if you're using [Micronaut](http://github.com/spicycode/micronaut)
 * spec/javascripts: if you're using [RSpec](http://rspec.info/)
 * test/javascript: if you're using anything else
 
-The layout of the JavaScript spec directories looks like this:
+The layout of the JavaScript spec directories looks like this (assuming you created a "graphics" spec as described in the section above):
 
 #### "javascripts" directory
-* application_spec.js: file with Screw.Unit specs
-* graphics_spec.js: another spec file
-* spec_helper.js: auto-included by each spec for common config & convenience functions
+* application_spec.js: file with Screw.Unit specs; intended for testing code in public/javascripts/application.js
+* graphics_spec.js: another spec file; intended for testing code in public/javascripts/graphics.js
+* spec_helper.js: a place a you to store your common configuration & convenience functions; auto-included by each spec
     
 #### "javascripts/fixtures" directory
-* application.html: base DOM for application_spec.js, also runs specs in-browser
-* graphics.html: base DOM for graphics_spec.js, also runs specs in-browser
-* screw.css: style Screw.Unit output while running specs in-browser
+* application.html: base DOM for application_spec.js; also runs specs in-browser
+* graphics.html: base DOM for graphics_spec.js; also runs specs in-browser
+* screw.css: stylesheet for Screw.Unit output when running specs in-browser
 
 ### Why We Need Fixtures
-This plugin relies on the convention that each spec file will have a similarly named HTML file in the `fixtures` directory.  We create one fixture per spec file so that env.js has a base DOM to emulate when running specs from the command line and so that we have an HTML launch-pad to run our specs in-browser.  
+The plugin relies on the convention that each spec file will have a similarly named HTML file in the `fixtures` directory.  We create one fixture per spec file so that env.js has a base DOM to emulate when running specs from the command line and so that we have an HTML launch-pad to run our specs in-browser.  
 
-If you want to have specific HTML for a suite of specs, put it in the HTML fixture for that suite.  If you want to run a specific suite of tests in Firefox or Internet Explorer, open the HTML fixture file with the same name and Screw.Unit automatically runs.
+If you want to have specific HTML for a suite of specs, put it in the HTML fixture for that suite.  If you want to run a specific suite of tests in Firefox or Internet Explorer, open the HTML fixture file with the same name and Screw.Unit automatically runs the specs associated with the fixture.
 
 Example Using jQuery
 ---------------------------------------
 
-This plugin is opinionated and assumes you're using jQuery by default.  The plugin itself actually uses jQuery under the covers to run Screw.Unit.
+The plugin is opinionated and assumes you're using jQuery by default.  The plugin itself actually uses jQuery under the covers to run Screw.Unit.
 
     require("spec_helper.js");
     require("../../public/javascripts/application.js");
@@ -81,7 +81,7 @@ This plugin is opinionated and assumes you're using jQuery by default.  The plug
 Example Using Prototype
 -----------------------
 
-It's very easy to add support for Prototype.  Here's an example:
+It's very easy to add support for Prototype.  Here's an example spec:
 
     jQuery.noConflict();
     
@@ -111,10 +111,10 @@ Note that you must do the following:
 JavaScript API
 --------------
 
-The JavaScript Testing Rails Plugin provides a small number of functions that help you write specs that run correctly inside a web browser as well from the Rhino command-line test runner.
+The JavaScript Testing Rails Plugin provides a handful of functions that help you write specs that run correctly inside a web browser as well from the Rhino command-line test runner.
 
 ### require(fileName, [{onload:function}])
-When running from the command line, `require` becomes a Rhino call to `load`, but in a web browser, it dynamically creates a JavaScript `script` tag and loads the given file for you.  It takes an optional `onload` callback function that will be ran immediately after the given JavaScript file is loaded.  This helps you chain dependencies.  This is especially useful when running in-browser where each JavaScript file is loaded asynchronously in a separate thread.
+When running from the command line, `require` becomes a Rhino call to `load`.  In a web browser, `require` dynamically creates a JavaScript `script` tag and loads the given file for you.  It takes an optional `onload` callback function that runs immediately after the given JavaScript file is loaded.  This helps you chain dependencies.  This is especially useful when running in-browser where each JavaScript file is loaded asynchronously in a separate thread.
 
     require("../../public/javascripts/prerequisite.js", {onload: function() {
         require("../../public/javascripts/dependent_file1.js");
@@ -125,13 +125,13 @@ When running from the command line, `require` becomes a Rhino call to `load`, bu
 When running from the command line, `debug` simply prints a message to stdout, but in a web browser it outputs into the DOM directly.  This helps you avoid using the `print` function which prints to stdout in Rhino but actually opens a file print dialog when running in a browser!
 
 ### console.debug(message)
-If you use Firebug, you might add a `console.debug` function call in your tests to debug a problem.  Calling this from the command-line would crash, however, because Firebug is missing.  To make life a little easier, this `console.debug` is just an alias to Rhino's `print` function and will write your message to stdout.
+If you use Firebug, you might add a `console.debug` function call in your tests to debug a problem.  Calling this from the command-line would crash, however, because Firebug is missing.  To make life a little easier, this `console.debug` function is just an alias to Rhino's `print` function and will write your message to stdout.
 
 Extras
 -------------
 
 ### rake js:fixtures
-If you're on Mac OS X, this command opens your JavaScript fixtures directory using Finder to make running specs from a browser easy.  If you're running on Linux, it opens the fixtures directory using Firefox.
+If you're on Mac OS X, this command opens your JavaScript fixtures directory using Finder so you can quickly locate and open any spec that you want to run in the browser.  If you're running on Linux, it opens the fixtures directory using Firefox.
 
 ### rake js:shell
 Runs an IRB-like JavaScript shell for debugging your JavaScript code.  jQuery and env.js are pre-loaded for you to make debugging DOM code easy.
@@ -151,7 +151,7 @@ Runs an IRB-like JavaScript shell for debugging your JavaScript code.  jQuery an
     Hello World!
     js> 
 
-Note that if you have `rlwrap` installed and on the command line path (and you really, really should!), then command-line history and readline arrow-up and down will be properly supported automatically.
+Note that if you have `rlwrap` installed and on the command line path (and you really, really should!), then command-line history and readline arrow-up and down will be properly supported automatically. (You can get `rlwrap` from your friendly neighborhood package manager.)
 
 Mocking Example with Smoke
 --------------------------
@@ -166,12 +166,12 @@ Smoke is a JavaScript mocking and stubbing toolkit that is somewhat similar to F
 
 Tips & Tricks
 -------------
-* Avoid using `print` in your tests while debugging.  It works fine from the command line but causes lots of headaches in browser.  (Just imagine a print dialog opening ten or fifteen times and then Firefox crashing... this is a mistake I've make too many times!  Trust me!)
-* We don't recommend testing jQuery or Prototype, especially event wiring.  (You don't test Rails do you?)  Instead write a separate function, test it, and wire it to events using jQuery or Prototype.
+* Avoid using `print` in your tests while debugging.  It works fine from the command line but causes lots of headaches in browser.  (Just imagine a print dialog opening ten or fifteen times and then Firefox crashing.  This is a mistake I've make too many times!  Trust me!)
+* We don't recommend testing jQuery or Prototype, especially event wiring.  (You don't test Rails, do you?)  Instead write a separate function, test it, and wire it to events using jQuery or Prototype.
 
 Caveats
 ----------
-env.js and jQuery 1.3.x do not currently get along well (as of 2009-04-14), so the JavaScript Testing Rails Plugin currently uses jQuery 1.2.6 to run command line specs.  This is currently in active development, and any help is very appreciated!
+env.js and jQuery 1.3.x do not currently get along well (as of 2009-04-14), so the JavaScript Testing Rails Plugin currently runs command line specs using jQuery 1.2.6.  This is currently in active development, and any help is very appreciated!
 
 Contributing
 ------------
@@ -180,7 +180,7 @@ Fork the [Relevance repo on GitHub](http://www.github.com/relevance/javascript_t
 Links
 -------------
 * [JavaScript Testing Rails Plugin](http://github.com/relevance/javascript_testing)
-* [Justin Gehtland's "Fully Headless JSSpec" Blog](http://blog.thinkrelevance.com/2008/7/31/fully-headless-jsspec)
+* [Justin Gehtland's "Fully Headless JSSpec" Blog Post](http://blog.thinkrelevance.com/2008/7/31/fully-headless-jsspec)
 * [Screw.Unit](http://github.com/nkallen/screw-unit)
 * [Screw.Unit Mailing List](http://groups.google.com/group/screw-unit)
 * [Smoke](http://github.com/andykent/smoke)
