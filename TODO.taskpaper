@@ -3,6 +3,7 @@ Release 1:
 	- include correct copyright notices of vendored software
 	- add API documentation (require, etc)
 	- explain that we're jQuery-opinionated, but give jQuery.noConflict() example for Prototype
+	- list Java (version?) as a system requirement
 - improve test output for command line @done(2009-01-30)
 - merge back to Relevance's javascript_testing project on GitHub @done
 - change generators to use Screw.Unit style instead of JS-Spec @done
