@@ -1,7 +1,12 @@
-JavaScript Testing
-==================
+JavaScript Testing Rails Plugin
+===============================
 
-The JavaScript Testing Rails Plugin adds support for command-line and in-browser JavaScript unit testing to your Rails app by bundling several great tools together like Rhino, env.js, Screw.Unit, and Smoke.  Write your JavaScript code in a behaviour-driven development in an opinionated, convention-over-configuration Rails-like way, just like you write your Ruby code.
+The JavaScript Testing Rails Plugin adds support for command-line and in-browser JavaScript unit tests to your Rails app.  It bundles several great tools together in a convention-over-configuration, Rails-like way.  These tools include:
+
+* `Rhino` - a Java-based JavaScript interpreter
+* `Screw.Unit` - a behaviour-driven development syntax for JavaScript similar to RSpec
+* `Smoke` - a JavaScript mocking & stubbing library similar to Mocha
+* `env.js` - a DOM implementation written entirely in JavaScript
 
 Installing and Running
 ----------------------
@@ -166,7 +171,7 @@ Smoke is a JavaScript mocking and stubbing toolkit that is somewhat similar to F
 
 Tips & Tricks
 -------------
-* Avoid using `print` in your tests while debugging.  It works fine from the command line but causes lots of headaches in browser.  (Just imagine a print dialog opening ten or fifteen times and then Firefox crashing.  This is a mistake I've make too many times!  Trust me!)
+* Avoid using `print` in your tests while debugging.  It works fine from the command line but causes lots of headaches in browser.  (Just imagine a print dialog opening ten or fifteen times and then Firefox crashing.  This is a mistake I've made too many times!  Trust me!)
 * We don't recommend testing jQuery or Prototype, especially event wiring.  (You don't test Rails, do you?)  Instead write a separate function, test it, and wire it to events using jQuery or Prototype.
 
 Caveats
