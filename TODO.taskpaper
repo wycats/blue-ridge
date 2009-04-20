@@ -1,8 +1,8 @@
 Release 1:
 - cleanup README
-	- include correct copyright notices of vendored software
-	- add API documentation (require, etc)
-	- explain that we're jQuery-opinionated, but give jQuery.noConflict() example for Prototype
+	- include correct copyright notices of vendored software @done
+	- add API documentation (require, etc) @done
+	- explain that we're jQuery-opinionated, but give jQuery.noConflict() example for Prototype @done
 	- list Java (version?) as a system requirement
 - improve test output for command line @done(2009-01-30)
 - merge back to Relevance's javascript_testing project on GitHub @done
@@ -20,13 +20,23 @@ Release 1:
 	- automatically require @done(2009-04-11)
 		- command line @done(2009-04-11)
 		- browser @done(2009-04-11)
-	- add examples of mocking to README
+	- add examples of mocking to README @done
+	- improve mocking example in README - show code under test
 	- caveat re stubbing in README
 - change name of plugin
 	- change the relevance github fork's name
 	- create a "javascript_testing" github project with a README that points folks to the new name
 	- what is the new name?  "blueridge"?  "blue-ridge"?  something else?
 Release 2:
+- Document TextMate support
+	- fork the screw.unit text mate bundle
+		- add the TextMate runner from the karnowski/javascript_testing Textmate bundle
+	- "git clone git://github.com/coreyti/screw-unit-tmbundle.git screw-unit.tmbundle"
+		- have to remove the "run" macro there
+	- "git clone git://github.com/karnowski/javascript-testing-tmbundle.git javascript-testing.tmbundle"
+		- needs to be smart enough to look for spec, test, or examples -- right now hard-coded to "test"
+	- known text-mate issue with builder.rb: http://robsanheim.com/2007/12/07/fixing-textmate-test-issues-blank_slate_method_added-stack-level-too-deep-systemstackerror/
+		- might also have to move it in the "Pristine Copy" version too
 - sprockets support?
 - improve "require" to take an array and chain them together in order
 - handle display of nested describes better for command-line
