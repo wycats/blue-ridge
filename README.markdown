@@ -169,6 +169,17 @@ Smoke is a JavaScript mocking and stubbing toolkit that is somewhat similar to F
       expect(SalesContract.calculateTotalCost([componentX, componentY])).to(equal, 66);
     });
 
+TextMate Integration
+--------------------
+Run your specs directory from TextMate using the [Blue Ridge TextMate Bundle](http://github.com/karnowski/blue-ridge.tmbundle).  (It's a fork of the original [Screw.Unit TextMate Bundle](http://github.com/coreyti/screw-unit-tmbundle) but adapted for use with the Blue Ridge plugin.)
+
+    cd ~/Library/Application Support/TextMate/Bundles/
+    git clone git://github.com/karnowski/blue-ridge-tmbundle.git Blue\ Ridge.tmbundle
+    
+Then when editing a Screw.Unit spec file in TextMate you can:
+* press command-R to run the spec directly from TextMate
+* type snippets like "it", "des", "bef", "aft" and then press the tab key to expand into full it blocks, describe blocks, etc.
+
 Tips & Tricks
 -------------
 * Avoid using `print` in your tests while debugging.  It works fine from the command line but causes lots of headaches in browser.  (Just imagine a print dialog opening ten or fifteen times and then Firefox crashing.  This is a mistake I've made too many times!  Trust me!)
