@@ -1,7 +1,7 @@
-JavaScript Testing Rails Plugin
-===============================
+Blue Ridge JavaScript Testing Rails Plugin
+==========================================
 
-The JavaScript Testing Rails Plugin adds support for command-line and in-browser JavaScript unit tests to your Rails app.  It bundles several great tools together in a convention-over-configuration, Rails-like way.  These tools include:
+The Blue Ridge JavaScript Testing Rails Plugin adds support for command-line and in-browser JavaScript unit tests to your Rails app.  It bundles several great tools together in a convention-over-configuration, Rails-like way.  These tools include:
 
 * `Rhino` - a Java-based JavaScript interpreter
 * `Screw.Unit` - a behaviour-driven development syntax for JavaScript similar to RSpec
@@ -13,7 +13,7 @@ Installing and Running
 
 To install:
 
-    ./script/plugin install git://github.com/relevance/javascript_testing.git
+    ./script/plugin install git://github.com/relevance/blue-ridge.git
     ./script/generate javascript_testing
   
 To run all of the specs:
@@ -38,7 +38,7 @@ Directory Layout: Specs and Fixtures
 
 ### JavaScript Spec Directories
 
-The plugin creates a directory for your JavaScript specs in one of the following directories, depending on which tool you use to test your Ruby code:
+Blue Ridge creates a directory for your JavaScript specs in one of the following directories, depending on which tool you use to test your Ruby code:
 
 * examples/javascripts: if you're using [Micronaut](http://github.com/spicycode/micronaut)
 * spec/javascripts: if you're using [RSpec](http://rspec.info/)
@@ -57,14 +57,14 @@ The layout of the JavaScript spec directories looks like this (assuming you crea
 * screw.css: stylesheet for Screw.Unit output when running specs in-browser
 
 ### Why We Need Fixtures
-The plugin relies on the convention that each spec file will have a similarly named HTML file in the `fixtures` directory.  We create one fixture per spec file so that env.js has a base DOM to emulate when running specs from the command line and so that we have an HTML launch-pad to run our specs in-browser.  
+Blue Ridge relies on the convention that each spec file will have a similarly named HTML file in the `fixtures` directory.  We create one fixture per spec file so that env.js has a base DOM to emulate when running specs from the command line and so that we have an HTML launch-pad to run our specs in-browser.  
 
 If you want to have specific HTML for a suite of specs, put it in the HTML fixture for that suite.  If you want to run a specific suite of tests in Firefox or Internet Explorer, open the HTML fixture file with the same name and Screw.Unit automatically runs the specs associated with the fixture.
 
 Example Using jQuery
 ---------------------------------------
 
-The plugin is opinionated and assumes you're using jQuery by default.  The plugin itself actually uses jQuery under the covers to run Screw.Unit.
+Blue Ridge is opinionated and assumes you're using jQuery by default.  The plugin itself actually uses jQuery under the covers to run Screw.Unit.
 
     require("spec_helper.js");
     require("../../public/javascripts/application.js");
@@ -116,7 +116,7 @@ Note that you must do the following:
 JavaScript API
 --------------
 
-The JavaScript Testing Rails Plugin provides a handful of functions that help you write specs that run correctly inside a web browser as well from the Rhino command-line test runner.
+The Blue Ridge plugin provides a handful of functions that help you write specs that run correctly inside a web browser as well from the Rhino command-line test runner.
 
 ### require(fileName, [{onload:function}])
 When running from the command line, `require` becomes a Rhino call to `load`.  In a web browser, `require` dynamically creates a JavaScript `script` tag and loads the given file for you.  It takes an optional `onload` callback function that runs immediately after the given JavaScript file is loaded.  This helps you chain dependencies.  This is especially useful when running in-browser where each JavaScript file is loaded asynchronously in a separate thread.
@@ -176,15 +176,15 @@ Tips & Tricks
 
 Caveats
 ----------
-env.js and jQuery 1.3.x do not currently get along well (as of 2009-04-14), so the JavaScript Testing Rails Plugin currently runs command line specs using jQuery 1.2.6.  This is currently in active development, and any help is very appreciated!
+env.js and jQuery 1.3.x do not currently get along well (as of 2009-04-14), so Blue Ridge currently runs command line specs using jQuery 1.2.6.  This is currently in active development, and any help is very appreciated!
 
 Contributing
 ------------
-Fork the [Relevance repo on GitHub](http://www.github.com/relevance/javascript_testing) and start hacking!  If you have patches, send us pull requests.  Also, [env.js](http://github.com/thatcher/env-js), [Smoke](http://github.com/andykent/smoke), and [Screw.Unit](http://github.com/nkallen/screw-unit) could use your love too!
+Fork the [Relevance repo on GitHub](http://www.github.com/relevance/blue-ridge) and start hacking!  If you have patches, send us pull requests.  Also, [env.js](http://github.com/thatcher/env-js), [Smoke](http://github.com/andykent/smoke), and [Screw.Unit](http://github.com/nkallen/screw-unit) could use your love too!
 
 Links
 -------------
-* [JavaScript Testing Rails Plugin](http://github.com/relevance/javascript_testing)
+* [Blue Ridge JavaScript Testing Rails Plugin](http://github.com/relevance/blue-ridge)
 * [Justin Gehtland's "Fully Headless JSSpec" Blog Post](http://blog.thinkrelevance.com/2008/7/31/fully-headless-jsspec)
 * [Screw.Unit](http://github.com/nkallen/screw-unit)
 * [Screw.Unit Mailing List](http://groups.google.com/group/screw-unit)

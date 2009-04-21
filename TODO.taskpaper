@@ -23,10 +23,10 @@ Release 1:
 	- add examples of mocking to README @done
 	- improve mocking example in README - show code under test
 	- caveat re stubbing in README
-- change name of plugin
-	- change the relevance github fork's name
-	- create a "javascript_testing" github project with a README that points folks to the new name
-	- what is the new name?  "blueridge"?  "blue-ridge"?  something else?
+- change name of plugin @done
+	- change the relevance github fork's name @done
+	- create a "javascript_testing" github project with a README that points folks to the new name @done
+	- what is the new name? --> "blue-ridge" @done
 Release 2:
 - Document TextMate support
 	- fork the screw.unit text mate bundle
