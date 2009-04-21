@@ -1,4 +1,4 @@
-plugin_prefix = "#{RAILS_ROOT}/vendor/plugins/javascript_testing"
+plugin_prefix = "#{RAILS_ROOT}/vendor/plugins/blue-ridge"
 rhino_command = "java -jar #{plugin_prefix}/lib/js.jar -w -debug"
 test_runner_command = "#{rhino_command} #{plugin_prefix}/lib/test_runner.js"
 
