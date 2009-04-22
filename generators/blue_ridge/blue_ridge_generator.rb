@@ -1,4 +1,4 @@
-class JavascriptTestingGenerator < Rails::Generator::Base
+class BlueRidgeGenerator < Rails::Generator::Base
   def manifest
     record do |m|
       m.directory base_dir

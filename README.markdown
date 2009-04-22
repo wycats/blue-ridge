@@ -14,7 +14,7 @@ Installing and Running
 To install:
 
     ./script/plugin install git://github.com/relevance/blue-ridge.git
-    ./script/generate javascript_testing
+    ./script/generate blue_ridge
   
 To run all of the specs:
 
