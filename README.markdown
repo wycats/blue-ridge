@@ -171,7 +171,7 @@ Smoke is a JavaScript mocking and stubbing toolkit that is somewhat similar to F
 
 TextMate Integration
 --------------------
-Run your specs directory from TextMate using the [Blue Ridge TextMate Bundle](http://github.com/karnowski/blue-ridge.tmbundle).  (It's a fork of the original [Screw.Unit TextMate Bundle](http://github.com/coreyti/screw-unit-tmbundle) but adapted for use with the Blue Ridge plugin.)
+Run your specs directory from TextMate using the [Blue Ridge TextMate Bundle](http://github.com/karnowski/blue-ridge-tmbundle).  (It's a fork of the original [Screw.Unit TextMate Bundle](http://github.com/coreyti/screw-unit-tmbundle) but adapted for use with the Blue Ridge plugin.)
 
     cd ~/Library/Application Support/TextMate/Bundles/
     git clone git://github.com/karnowski/blue-ridge-tmbundle.git Blue\ Ridge.tmbundle
