@@ -200,7 +200,7 @@ Links
 * [Screw.Unit](http://github.com/nkallen/screw-unit)
 * [Screw.Unit Mailing List](http://groups.google.com/group/screw-unit)
 * [Smoke](http://github.com/andykent/smoke)
-* [env.js](http://www.envjs.com) ([Github](http://github.com/thatcher/env-js))
+* [env.js](http://github.com/thatcher/env-js))
 * [env.js Mailing List](http://groups.google.com/group/envjs)
 * [Mozilla Rhino](http://www.mozilla.org/rhino/)
 * [W3C DOM Specifications](http://www.w3.org/DOM/DOMTR)
