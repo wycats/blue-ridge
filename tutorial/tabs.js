@@ -16,15 +16,15 @@ jQuery.fn.setupPlugin = function(setup, options) {
   }
 };
 
-jQuery(function($) {
-  var $$ = function(param) {
-    var node = $(param)[0];
-    var id = $.data(node);
-    $.cache[id] = $.cache[id] || {};
-    $.cache[id].node = node;
-    return $.cache[id];
-  };
-  
+var $$ = function(param) {
+  var node = $(param)[0];
+  var id = $.data(node);
+  $.cache[id] = $.cache[id] || {};
+  $.cache[id].node = node;
+  return $.cache[id];
+};
+
+jQuery(function($) {  
   $.fn.tabs = function(options) {
     options = options || {};
     
@@ -38,7 +38,7 @@ jQuery(function($) {
         var nodes = $(this.node).find("li a");
         if(filter) nodes = nodes.filter("[href='" + filter + "']");
         return nodes;
-      }
+      };
       
       $("li a", tabList)
         .click(function() {
@@ -47,7 +47,6 @@ jQuery(function($) {
         }).each(function() {
           var panel = $$(this).panel = $($(this).attr("href"));
           $$(tabList).panels = $$(tabList).panels.add(panel);
-          tabList.trigger("setupPanel", [panel]);
         });
         
       tabList.trigger("initialize");
@@ -57,14 +56,15 @@ jQuery(function($) {
   };
   
   $.fn.tabs.base = {
-    setupPanel: [function(options) {
-      this.bind("setupPanel", function(e, selector) {
-        $(selector).hide();
+    setupTabs: [function(options) {
+      this.bind("initialize", function() {
+        $$(this).panels.each(function() { $(this).hide(); });
       });
     }],
     
     initialize: [function(options) {
       this.bind("initialize", function() {
+        $$(this).panels.each(function() { $(this).hide(); });
         var firstTab = $(this).find("li a:first")[0];
         $(this).trigger("activated", firstTab);
       });
@@ -81,7 +81,7 @@ jQuery(function($) {
     }]
   };
   
-  var wycats = $.extend({}, $.fn.tabs.base);
+  var wycats = $.fn.tabs.wycats = $.extend({}, $.fn.tabs.base);
   wycats.activate.unshift(function(options) {
     var xhr = options.xhr;
     this.bind("activated", function(e, selected) {
@@ -104,16 +104,14 @@ jQuery(function($) {
     this.bind("activated", function(e, selected) {
       window.location.hash = $(selected).attr("href");
     });
-    
+            
     var lastHash = window.location.hash;
     setInterval(function() {
       if(lastHash != window.location.hash) {
-        var tab = $$(container).tabs(window.loction.hash)
-        if(!tab.is(".active")) $(tabs).trigger("activated", tab[0]);
+        var tab = $$(container).tabs(window.location.hash);
+        if(!tab.is(".active")) $(container).trigger("activated", tab[0]);
         lastHash = window.location.hash;
       }
     }, 500);    
-  }];
-    
-  $("ul.tabs").tabs({setup: wycats});
+  }];    
 });
