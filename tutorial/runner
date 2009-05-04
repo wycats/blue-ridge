@@ -1,0 +1,37 @@
+#!/usr/bin/env ruby
+
+require "fileutils"
+ng_pid = File.join(File.dirname(__FILE__), "ng.pid")
+
+stop = ARGV[0] == "stop-server"
+
+if File.exists?(ng_pid) || stop
+  pid = File.read(ng_pid).strip.to_i
+  mem_used = `ps #{pid} -orss`.split("\n")[1].strip
+  if mem_used.to_i > 200_000 || stop
+    puts "NAILGUN USED > 200MB -- RESTARTING" unless stop
+    Process.kill(9, pid)
+    FileUtils.rm(ng_pid)
+  end
+  exit if stop
+end
+
+unless File.exists?(ng_pid)
+  pid = Kernel.fork do
+    exec "#{File.dirname(__FILE__)}/../jruby/bin/jruby --ng-server 2> /dev/null"
+  end
+  sleep 1
+  pid2 = `ps -o ppid,pid`.split("\n").map {|x| x.strip.split(/\s+/) }[1..-1].assoc(pid.to_s)[1]
+  sleep 1
+  pid3 = `ps -o ppid,pid`.split("\n").map {|x| x.strip.split(/\s+/) }[1..-1].assoc(pid2.to_s)[1]
+  File.open(ng_pid, "w") do |file|
+    file.puts pid3
+  end
+  Process.detach(pid)
+end
+
+pid = Kernel.fork do
+  exec "#{File.dirname(__FILE__)}/../jruby/bin/jruby --ng runner.rb"
+end
+
+Process.wait2(pid)
