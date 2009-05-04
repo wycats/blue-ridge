@@ -12,5 +12,6 @@ Johnson.load(PLUGIN_PREFIX + "/lib/screw.mocking.js");
 Johnson.load(PLUGIN_PREFIX + "/lib/consoleReportForRake.js");
 Johnson.load(PLUGIN_PREFIX + "/tutorial/tabs_spec.js");
 
+jQuery.ajaxSetup({async: false});
 jQuery(document).trigger("ready")
 jQuery(window).trigger("load");
