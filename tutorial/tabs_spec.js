@@ -10,8 +10,8 @@ jQuery(function($) {
     Screw.FiredEvents.activated = {event: e, selected: selected};
   });
   
-  $.fn.tabs.wycats = $.fn.tabs.wycats || $.fn.tabs.base;
-  $("ul.tabs").tabs({setup: $.fn.tabs.wycats, xhr: {"#second": "/second"}});
+  $.fn.tabs.tutorial = $.fn.tabs.tutorial || $.fn.tabs.base;
+  $("ul.tabs").tabs({setup: $.fn.tabs.tutorial, xhr: {"#second": "/second"}});
 });
 
 // Specs
