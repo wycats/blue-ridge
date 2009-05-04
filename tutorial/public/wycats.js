@@ -66,6 +66,24 @@ jQuery.fn.setupPlugin = function(setup, options) {
   }
 };
 
+// Returns an object that is bound to the first element matching the
+// selector. $$ takes the same first parameter as jQuery.
+//
+// If you wish to add methods to the $$ object, note that the original 
+// node is available as this.node inside $$ function.
+//
+// Example:
+//
+//  $$("#myDiv").update = function() {
+//    $(this.node).load(this.node.rel);
+//  }
+//
+//  $$("#myDiv").update();
+//
+// Note that properties and methods will only be bound to a single
+// element. This effectively allows the promotion of an element
+// node to a full-fledged object with stateful properties and
+// methods.
 var $$ = function(param) {
   var node = $(param)[0];
   var id = $.data(node);
