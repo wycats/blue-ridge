@@ -1,9 +1,3 @@
-// jQuery(function($) {
-//   
-//   $("ul.tabs").tabs({setup: $.wycats, xhr: {"#first": "/awesome"}})
-//   
-// });
-
 jQuery.fn.setupPlugin = function(setup, options) {
   for(extra in setup) {
     var self = this;

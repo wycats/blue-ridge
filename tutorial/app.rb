@@ -6,11 +6,15 @@ require "uri"
 require "rack"
 require "rack/test"
 
-class TestRackApp
-  def call(env)
-    # if env["PATH_INFO"] == "/second"
+class App
+  def self.call(env)
     resp = Rack::Response.new
-    resp.body = "omg"
+    if File.file?("." + env["PATH_INFO"])
+      return Rack::File.new(".").call(env)
+    elsif env["PATH_INFO"] == "/second"
+      resp.body = "omg"
+      resp.headers["Content-Length"] = "3"
+    end
     resp.to_a
   end
 end
@@ -19,7 +23,7 @@ class Tester
   include Rack::Test::Methods
   
   def app
-    TestRackApp.new
+    App
   end
   
   def fetch(xhr)
@@ -29,5 +33,7 @@ class Tester
   end
 end
 
-$johnson.put("RackTester", Tester.new.method(:fetch))
-$johnson.eval("__env__.mockConnection = {request: RackTester}")
+if $johnson
+  $johnson.put("RackTester", Tester.new.method(:fetch))
+  $johnson.eval("__env__.mockConnection = {request: RackTester}")
+end

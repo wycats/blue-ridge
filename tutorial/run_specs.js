@@ -1,6 +1,6 @@
 Johnson.load(PLUGIN_PREFIX + "/lib/jquery.fn.js");
 Johnson.load(PLUGIN_PREFIX + "/lib/jquery.print.js");
-Johnson.load(PLUGIN_PREFIX + "/tutorial/tabs.js");
+Johnson.load(PLUGIN_PREFIX + "/tutorial/public/tabs.js");
 Johnson.load(PLUGIN_PREFIX + "/lib/screw.builder.js");
 Johnson.load(PLUGIN_PREFIX + "/lib/screw.matchers.js");
 Johnson.load(PLUGIN_PREFIX + "/lib/screw.events.js");
